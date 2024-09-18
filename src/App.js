@@ -19,12 +19,18 @@ function Attributes({ attributes, setAttributes }) {
       [attribute]: prevAttributes[attribute] - 1,
     }));
   };
+
+  // Function to calculate the ability modifier
+  const calculateModifier = (value) => {
+    return Math.floor((value - 10) / 2);
+  };
+
   return (
     <div>
       <h2>Attributes</h2>
       <div>
         {ATTRIBUTE_LIST.map((attribute, index) => (
-          <div key={index}>{attribute}: {attributes[attribute]}
+          <div key={index}>{attribute}: {attributes[attribute]} (Modifier: {calculateModifier(attributes[attribute])})
             <button onClick={() => incrementValue(attribute)}>+</button>
             <button onClick={() => decrementValue(attribute)}>-</button>
           </div>
